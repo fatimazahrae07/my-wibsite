@@ -2,87 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My First Website</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome for icons (اختياري) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fatima Zahrae - My Products</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Header / Navigation -->
+  <header>
+    <div class="logo">
+      <h1>Fatima Zahrae</h1>
+    </div>
+    <nav>
+      <button id="aboutBtn">About Me</button>
+      <button id="productsBtn">Products</button>
+      <button id="contactBtn">Contact</button>
+    </nav>
+  </header>
+
   <!-- Welcome Section -->
-  <div class="welcome-section">
-    <h1>Welcome to My First Website</h1>
-    <p>مرحبا بكم في أول موقع ديالي</p>
-  </div>
+  <section class="hero">
+    <h2>Welcome to My Product Showcase</h2>
+    <p>Hi! I created this website to showcase my products. You can send your orders to me at <strong>0676379628</strong>.</p>
+  </section>
 
-  <!-- Buttons Section -->
-  <div class="button-section">
-    <button id="aboutBtn">About Me</button>
-  </div>
-
-  <!-- About Me Section (hidden initially) -->
+  <!-- About Me Modal -->
   <div id="aboutSection" class="modal-section">
     <span class="closeBtn" onclick="closeSection('aboutSection')">&times;</span>
-    <h2>Hi! My Name is Fatima Zahrae</h2>
-    <p>I did this website to post my products, and you can send your order to me at0612455267 .</p>
-    <p></p>مرحبا! أنا فاطمة الزهراء ودرّت هذا الموقع باش نعرض المنتجات ديالي، وكتقدري تصيفطي لي الطلبية ديالك على الرقم 0612455267.</p>
+    <h2>About Me</h2>
+    <p>Hi! My name is Fatima Zahrae. I created this website to post my products online.</p>
+  </div>
 
-    <!-- Add Product Form -->
-    <div id="addProductForm">
-      <h3>Add New Product</h3>
-      <input type="text" id="prodName" placeholder="Product Name">
-      <input type="text" id="prodPrice" placeholder="Price">
-      <input type="file" id="prodImage">
-      <button onclick="addProduct()">Add Product</button>
+  <!-- Products Section -->
+  <section id="productsSection" class="products-section">
+    <h2>My Products</h2>
+    <div class="product-list" id="productList">
+      <!-- Product cards will appear here -->
     </div>
+    <button id="addProductBtn">Add Product</button>
+  </section>
 
-    <!-- Products Container -->
-    <div id="productContainer">
-      <!-- المنتجات القديمة اللي حابة تخليها -->
-    </div>
+  <!-- Add Product Modal -->
+  <div id="addProductModal" class="modal-section">
+    <span class="closeBtn" onclick="closeSection('addProductModal')">&times;</span>
+    <h2>Add a New Product</h2>
+    <form id="productForm">
+      <input type="text" id="productName" placeholder="Product Name" required>
+      <input type="text" id="productPrice" placeholder="Price" required>
+      <input type="text" id="productImage" placeholder="Image URL" required>
+      <button type="submit">Add Product</button>
+    </form>
   </div>
 
   <!-- JavaScript -->
   <script>
-    const aboutBtn = document.getElementById("aboutBtn");
-    const aboutSection = document.getElementById("aboutSection");
+    // Show/Hide Sections
+    const aboutBtn = document.getElementById('aboutBtn');
+    const productsBtn = document.getElementById('productsBtn');
+    const contactBtn = document.getElementById('contactBtn');
 
-    // فتح About Me
-    aboutBtn.onclick = function() {
-      aboutSection.style.display = "block";
+    aboutBtn.addEventListener('click', () => openSection('aboutSection'));
+    productsBtn.addEventListener('click', () => openSection('productsSection'));
+    contactBtn.addEventListener('click', () => alert('Contact me at 0612455267'));
+
+    function openSection(id) {
+      document.querySelectorAll('.modal-section').forEach(s => s.style.display = 'none');
+      const section = document.getElementById(id);
+      if (section) section.style.display = 'block';
     }
 
-    // غلق Sections
     function closeSection(id) {
-      document.getElementById(id).style.display = "none";
+      const section = document.getElementById(id);
+      if (section) section.style.display = 'none';
     }
 
-    // إضافة منتجات ديناميكياً
-    function addProduct() {
-      const name = document.getElementById("prodName").value;
-      const price = document.getElementById("prodPrice").value;
-      const imageInput = document.getElementById("prodImage");
+    // Add Product Logic
+    const addProductBtn = document.getElementById('addProductBtn');
+    const addProductModal = document.getElementById('addProductModal');
+    const productForm = document.getElementById('productForm');
+    const productList = document.getElementById('productList');
 
-      if(!name || !price || imageInput.files.length === 0) {
-        alert("Please fill all fields and select an image!");
-        return;
-      }
+    addProductBtn.addEventListener('click', () => addProductModal.style.display = 'block');
 
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const container = document.getElementById("productContainer");
-        const div = document.createElement("div");
-        div.classList.add("product-card");
-        div.innerHTML = `
-          <img src="${e.target.result}" alt="${name}">
-          <h3>${name}</h3>
-          <p>Price: ${price}</p>
-        `;
-        container.appendChild(div);
-      }
-      reader.readAsDataURL(imageInput.files[0]);
-    }
+    productForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('productName').value;
+      const price = document.getElementById('productPrice').value;
+      const image = document.getElementById('productImage').value;
+
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${image}" alt="${name}">
+        <h3>${name}</h3>
+        <p>Price: ${price}</p>
+      `;
+      productList.appendChild(card);
+
+      productForm.reset();
+      addProductModal.style.display = 'none';
+    });
   </script>
-
 </body>
 </html>
+
