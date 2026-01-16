@@ -1,65 +1,62 @@
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f2f2f2;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
+  text-align: center;
+  background-color: #f7f7f7;
 }
 
-h1, h2, h3 {
-  color: #0066ff;
-}
-
-p {
-  font-size: 16px;
-  color: #333;
-}
-
-/* Welcome Section */
-.welcome-section {
-  padding: 50px 20px;
-}
-
-/* Buttons Section */
-.button-section {
-  margin: 20px;
-}
-
-button {
-  padding: 12px 25px;
-  margin: 10px;
-  font-size: 16px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
   background-color: #0066ff;
   color: white;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav button {
+  margin: 0 10px;
+  padding: 10px 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  background-color: white;
+  color: #0066ff;
+  font-weight: bold;
   transition: 0.3s;
 }
 
-button:hover {
+nav button:hover {
   background-color: #0044cc;
+  color: white;
 }
 
-/* Modal Section */
+.hero {
+  padding: 50px 20px;
+  background-color: #e0eaff;
+}
+
 .modal-section {
   display: none;
   position: fixed;
-  top: 50px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #fff;
-  width: 90%;
-  max-width: 800px;
+  background-color: white;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  max-width: 600px;
+  width: 90%;
   z-index: 1000;
-  text-align: center;
 }
 
-/* Close Button */
 .closeBtn {
   float: right;
   font-size: 28px;
@@ -69,17 +66,26 @@ button:hover {
 }
 
 .closeBtn:hover {
-  color: #ff0000;
+  color: red;
 }
 
-/* Product Cards */
+.products-section {
+  padding: 30px 20px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .product-card {
-  display: inline-block;
   border: 1px solid #ddd;
   border-radius: 10px;
-  padding: 15px;
-  margin: 10px;
   width: 200px;
+  margin: 10px;
+  padding: 15px;
+  background-color: white;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
@@ -87,4 +93,20 @@ button:hover {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+#addProductBtn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #0066ff;
+  color: white;
+  transition: 0.3s;
+}
+
+#addProductBtn:hover {
+  background-color: #0044cc;
 }
