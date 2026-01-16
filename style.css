@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: #0066ff;
+}
+
+p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Welcome Section */
+.welcome-section {
+  padding: 50px 20px;
+}
+
+/* Buttons Section */
+.button-section {
+  margin: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  font-size: 16px;
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0044cc;
+}
+
+/* Modal Section */
+.modal-section {
+  display: none;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  width: 90%;
+  max-width: 800px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 1000;
+  text-align: center;
+}
+
+/* Close Button */
+.closeBtn {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.closeBtn:hover {
+  color: #ff0000;
+}
+
+/* Product Cards */
+.product-card {
+  display: inline-block;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  width: 200px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
